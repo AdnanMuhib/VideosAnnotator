@@ -39,7 +39,7 @@ class VideoWriter:
 			fps, (width,height))
 		print("[INFO]... Writing Clip:  " + str(clip_no) + " of " + str(number_of_clips))
 		fourcc = cv2.VideoWriter_fourcc('X','V','I','D')
-		for x in xrange(1,int(nframe)):
+		for x in range(1,int(nframe)):
 			flag, frame = cap.read()
 			if flag:
 				writer.write(frame)
@@ -74,33 +74,46 @@ class VideoCaption:
 		self.videos_path = data_dir
 		self.videos_list = os.listdir(data_dir)
 		self.unique_videos = []
-		for x in xrange(len(self.videos_list)):
+		videos_dict = {}
+		for x in range(len(self.videos_list)):
 			file_name = os.path.splitext(self.videos_list[x])[0].split('_')[0]
 			if not file_name in self.unique_videos:
 				self.unique_videos.append(file_name)
-		print(self.unique_videos)
-		videos_dict = {}
-		sub_clips = {}
-		sub_clips['name'] = "19_1"
-		sub_clips['captions'] = []
-		sub_clips['captions'].append("Caption 1")
-		sub_clips['captions'].append("Caption 2")
-		sub_clips['captions'].append("Caption 3")
-		sub_clips['captions'].append("Caption 4")
-		sub_clips['captions'].append("Caption 5")
-		sub_clips1 = {}
-		sub_clips1['name'] = "19_2"
-		sub_clips1['captions'] = []
-		sub_clips1['captions'].append("Caption 1")
-		sub_clips1['captions'].append("Caption 2")
-		sub_clips1['captions'].append("Caption 3")
-		sub_clips1['captions'].append("Caption 4")
-		sub_clips1['captions'].append("Caption 5")
+				videos_dict[file_name] = []
+			
+			sub_clips = {}
+			sub_clips['name'] = os.path.splitext(self.videos_list[x])[0]
+			sub_clips['captions'] = []
+			sub_clips['captions'].append("Caption 1")
+			sub_clips['captions'].append("Caption 2")
+			sub_clips['captions'].append("Caption 3")
+			sub_clips['captions'].append("Caption 4")
+			sub_clips['captions'].append("Caption 5")
+			videos_dict[file_name].append(sub_clips)
 
-		for i in xrange(len(self.unique_videos)):
-			videos_dict[self.unique_videos[i]] = []
-			videos_dict[self.unique_videos[i]].append(sub_clips)
-			videos_dict[self.unique_videos[i]].append(sub_clips1)
+		# print(self.unique_videos)
+		# videos_dict = {}
+		# sub_clips = {}
+		# sub_clips['name'] = "19_1"
+		# sub_clips['captions'] = []
+		# sub_clips['captions'].append("Caption 1")
+		# sub_clips['captions'].append("Caption 2")
+		# sub_clips['captions'].append("Caption 3")
+		# sub_clips['captions'].append("Caption 4")
+		# sub_clips['captions'].append("Caption 5")
+		# sub_clips1 = {}
+		# sub_clips1['name'] = "19_2"
+		# sub_clips1['captions'] = []
+		# sub_clips1['captions'].append("Caption 1")
+		# sub_clips1['captions'].append("Caption 2")
+		# sub_clips1['captions'].append("Caption 3")
+		# sub_clips1['captions'].append("Caption 4")
+		# sub_clips1['captions'].append("Caption 5")
+
+		# for i in range(len(self.unique_videos)):
+		# 	videos_dict[self.unique_videos[i]] = []
+		# 	videos_dict[self.unique_videos[i]].append(sub_clips)
+		# 	videos_dict[self.unique_videos[i]].append(sub_clips1)
 		pprint.pprint(videos_dict, width=10)
 
 
@@ -129,11 +142,11 @@ def OneVideo(video_path):
 	vw = VideoWriter(video_path, output_dir, clip_duration)
 	vw.GenerateClips()
 def main():
-	videos_directory = "D:\\UNIVERSITY DOCUMENTS\\SEMESTER NUMBER 8\\CV\\Videos Captioning\\Videos"
+	videos_directory = "Videos"
 	#data_dir = videos_directory + "\\data\\"
-	data_dir = "data\\"
+	data_dir = "Videos\\data\\"
 	v_caption = VideoCaption(data_dir)
-	#BatchProcessor(videos_directory)
+	# BatchProcessor(videos_directory)
 	#OneVideo("58.mp4")
 	
 	#print(vw.GetFileNameFromPath())
