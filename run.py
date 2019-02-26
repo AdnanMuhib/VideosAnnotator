@@ -34,11 +34,10 @@ class VideoWriter:
 		print("[INFO]... Output Path " + output_file)
 		self.CheckDirectory()
 		clip_no = 1
-		writer = cv2.VideoWriter(output_file + "_" + str(clip_no) + ".avi",
-			cv2.VideoWriter_fourcc('X','V','I','D'),
-			fps, (width,height))
-		print("[INFO]... Writing Clip:  " + str(clip_no) + " of " + str(number_of_clips))
 		fourcc = cv2.VideoWriter_fourcc('X','V','I','D')
+		writer = cv2.VideoWriter(output_file + "_" + str(clip_no) + ".mp4", fourcc, fps, (width,height))
+		print("[INFO]... Writing Clip:  " + str(clip_no) + " of " + str(number_of_clips))
+		
 		for x in range(1,int(nframe)):
 			flag, frame = cap.read()
 			if flag:
@@ -52,7 +51,7 @@ class VideoWriter:
 				if(clip_no == number_of_clips + 1):
 					break;
 				print("[INFO]... Writing Clip:  " + str(clip_no) + " of " + str(number_of_clips))
-				writer = cv2.VideoWriter(output_file + "_" + str(clip_no) + ".avi", fourcc, fps, (width,height))
+				writer = cv2.VideoWriter(output_file + "_" + str(clip_no) + ".mp4", fourcc, fps, (width,height))
 		cap.release()
 	def CheckDirectory(self):
 		if not os.path.exists(self.output_dir):

@@ -279,7 +279,7 @@ class Ui_MainWindow(object):
         else:
             return
     def btnBrowseVideo_clicked(self):
-        video_file = QtGui.QFileDialog.getOpenFileName(None,'Select Video','.', filter='Video Files (*.mp4)')
+        video_file = QtGui.QFileDialog.getOpenFileName(None,'Select Video', filter='Video Files (*.mp4)')
         if(video_file):
             print("[INFO]... " + str(video_file))
             self.video_file = str(video_file)
