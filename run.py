@@ -116,37 +116,33 @@ class VideoCaption:
 		# 	videos_dict[self.unique_videos[i]].append(sub_clips1)
 		pprint.pprint(videos_dict, width=10)
 
-
-class VideoClip:
-	"""docstring for VideoClip"""
-	def __init__(self, arg):
-		super(VideoClip, self).__init__()
-		self.arg = arg
-	def __init__(self):
-		#self.clip_file = 
-		self.sub_clips = []
-def BatchProcessor(videos_directory):
+def BatchProcessor(videos_directory, CLIP_DURATION):
 	OUTPUT_DIR = videos_directory + "/data/"
 	if not os.path.exists(OUTPUT_DIR):
 			os.makedirs(OUTPUT_DIR)
-	CLIP_DURATION = 2 # in seconds
+	#CLIP_DURATION = 2 # in seconds
 	videos = os.listdir(videos_directory)
 	for i in range(len(videos)):
 		vw = VideoWriter(videos_directory + "\\" + videos[i], OUTPUT_DIR, CLIP_DURATION)
 		vw.GenerateClips()
 		#print(vw.GetFileNameFromPath())
-def OneVideo(video_path):
-	#video_path = "58.mp4"
-	output_dir = "data/"
-	clip_duration = 2 # in seconds
+	return True
+
+def OneVideo(video_path, clip_duration):
+	directory =  os.path.dirname(os.path.abspath(video_path))
+	output_dir = directory + "/data/"
+	#clip_duration = 2 # in seconds
 	vw = VideoWriter(video_path, output_dir, clip_duration)
 	vw.GenerateClips()
+	return True
+
 def main():
-	videos_directory = "Videos"
+	pass
+	#videos_directory = "Videos"
 	#data_dir = videos_directory + "\\data\\"
-	data_dir = "Videos\\data\\"
-	v_caption = VideoCaption(data_dir)
-	# BatchProcessor(videos_directory)
+	#data_dir = "Videos\\data\\"
+	#v_caption = VideoCaption(data_dir)
+	#BatchProcessor(videos_directory)
 	#OneVideo("58.mp4")
 	
 	#print(vw.GetFileNameFromPath())
