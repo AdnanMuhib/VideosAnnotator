@@ -2,6 +2,9 @@
 Annotation tool for video clips
 In Order to Train Video Clips By Descriptions, Manually Labeling every clip is tedious job.
 Videos Annotator Helps to Automate Lot of Tasks and Saves Time.
+
+[Download Binary Release](https://drive.google.com/open?id=1QbROX668BGh_gM2AEjF9wol8iW8GpKDA)
+
 ![Screenshot](Screenshot.png)
 
 Followings are current features:
