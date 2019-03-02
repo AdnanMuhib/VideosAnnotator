@@ -11,6 +11,7 @@ import run
 import threading
 import os
 import cv2
+import re
 # from PyQt4.QtWidgets import QFileDialog
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -249,9 +250,15 @@ class Ui_MainWindow(object):
             self.current_index = self.current_index - 1
             print(self.data_videos[self.current_index])
 
+    def atoi(self, text):
+        return int(text) if text.isdigit() else text
+
+    def natural_keys(self, text):
+        return [ self.atoi(c) for c in re.split(r'(\d+)', text) ]
+
     def UpdateVideosList(self):
         self.data_videos = os.listdir(self.data_dir)
-        self.data_videos.sort()
+        self.data_videos.sort(key=self.natural_keys)
         model = QtGui.QStandardItemModel()
         self.listViewVideos.setModel(model)
         for i in self.data_videos:
