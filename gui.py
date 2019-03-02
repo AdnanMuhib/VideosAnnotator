@@ -229,7 +229,8 @@ class Ui_MainWindow(object):
         for x in range(int(nframe)):
             flag, frame = cap.read()
             if flag:
-                cv2.imshow('frame',frame)
+                res = cv2.resize(frame,(400, 400), interpolation = cv2.INTER_CUBIC)
+                cv2.imshow('frame',res)
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                   break
         cap.release()
@@ -241,6 +242,7 @@ class Ui_MainWindow(object):
         if(self.current_index < len(self.data_videos) - 1):
             self.current_index = self.current_index + 1
             print(self.data_videos[self.current_index])
+            self.label_5.setText("Selected Video -> " + self.data_videos[self.current_index])
 
     def btnPreviousVideo_clicked(self):
         if self.data_videos == None:
@@ -249,6 +251,7 @@ class Ui_MainWindow(object):
         if(self.current_index >= 0):
             self.current_index = self.current_index - 1
             print(self.data_videos[self.current_index])
+            self.label_5.setText("Selected Video -> " + self.data_videos[self.current_index])
 
     def atoi(self, text):
         return int(text) if text.isdigit() else text
@@ -265,6 +268,7 @@ class Ui_MainWindow(object):
             if(i.endswith('.mp4') or i.endswith('.avi')):
                 item = QtGui.QStandardItem(i)
                 model.appendRow(item)
+        self.label_5.setText("Selected Video -> " + self.data_videos[0])
     def btnBrowseVideosFolder_clicked(self):
         folder = QtGui.QFileDialog.getExistingDirectory(None,'Select Videos Folder')
         if folder != None:
