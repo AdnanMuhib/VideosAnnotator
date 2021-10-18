@@ -1,25 +1,28 @@
 # Videos Annotator
-Annotation tool for video clips
-In order to train video clips by descriptions, manually labeling every clip is tedious job.
-Videos Annotator helps to automate lot of tasks and saves time.
+This is an annotation tool for video clips
 
-# [Download v1.0 Release](https://github.com/AdnanMuhib/VideosAnnotator/releases/tag/v1.0)
+To train video clips by descriptions, manually labeling every clip can be a tedious job.
+<b>Videos Annotator</b> helps to automate lot of these tasks, hence saving time.
 
+## Releases:
+[Download v1.0](https://github.com/AdnanMuhib/VideosAnnotator/releases/tag/v1.0)
+
+## Screenshots:
 ![Screenshot](Screenshot.png)
 
-Followings are current features:
+## Following are the current features:
 
-## Generating Video Clips
-- Generate Clips from the provided Videos Folder
-- Generate Clips from Single Video input
-- Specify Duration for Each Video Clip
-- Automatic Data Folder Creation
-## Labeling the Video Clips
-- Select the Clips Folder to Annotate
-- List of Loaded Clips
-- Preview Any Clip
-- Add up to 5 Captions for Every Clip
-- Automatic Next Clip When Saving Captions for Current Clip
-- Manually Switch between Next and Previous Clip
+### 1. Generating Video Clips
+- Generate video clips from the provided videos folder
+- Generate video clips from a single video input
+- Specify duration for each video clip
+- Automatic data folder creation
+
+### 2. Labeling the Video Clips
+- Select the clips Folder to start annotating
+- List loaded clips
+- Preview any clip
+- Add up to 5 captions for every clip
+- Automatically move to next clip after saving captions for current clip
+- Manually switch to next or previous Clip
 - Automatic Annotations Folder Creations
-
